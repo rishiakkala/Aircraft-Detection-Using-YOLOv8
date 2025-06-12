@@ -192,7 +192,7 @@ The interactive web application provides the following functionality:
 ## Application Screenshots
 
 ### Main Interface
-![Main Interface]([screenshots/main_interface.png](https://github.com/rishiakkala/Aircraft-Detection-Using-YOLOv8/blob/main/screenshots/main_interface.png))
+![Main Interface](screenshots/main_interface.png)
 *The main application interface showing upload options and settings*
 
 ### Processing
