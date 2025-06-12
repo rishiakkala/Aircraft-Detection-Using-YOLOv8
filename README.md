@@ -253,13 +253,7 @@ The App can be customized by modifying `app.py`:
    - Ensure the trained model exists in the `models/` directory
    - Check model path in the app configuration
 
-3. **Streamlit Port Issues**:
-   ```bash
-   # Run on a different port
-   streamlit run app.py --server.port 8502
-   ```
-
-4. **Memory Issues**:
+3. **Memory Issues**:
    - Reduce batch size for training
    - Use smaller model size ('n' or 's')
    - Process smaller images
