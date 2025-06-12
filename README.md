@@ -55,6 +55,16 @@ The dataset contains a diverse range of military and civilian aircraft organized
 - Vulcan (Historic bomber)
 - XB70 (Experimental bomber)
 
+### Training Process
+
+The training script will:
+1. Set up GPU if available (CUDA/MPS support)
+2. Create a dataset YAML configuration file
+3. Train the YOLOv8 model (default: YOLOv8s)
+4. Validate the model and calculate performance metrics
+5. Save the trained model to the `models/` directory
+6. Generate visualization plots in the `runs/` directory
+
 ## Project Structure
 
 ```
@@ -70,18 +80,65 @@ The dataset contains a diverse range of military and civilian aircraft organized
 │       └── aircraft_val/      # Validation labels
 ├── models/                    # Saved model weights
 ├── runs/                      # Training results and visualizations
-└── train_aircraft_yolov8.py   # Main training script
+├── screenshots/               # Application screenshots
+├── app.py                     # Streamlit web application
+├── train_aircraft_yolov8.py   # Main training script
+├── requirements.txt           # Python dependencies
+└── README.md                  # Project documentation
 ```
 
-## Requirements
+## Requirements File
+
+Create a `requirements.txt` file with the following dependencies:
+
+```
+ultralytics>=8.0.0
+streamlit>=1.28.0
+torch>=2.0.0
+torchvision>=0.15.0
+opencv-python>=4.8.0
+pillow>=9.5.0
+numpy>=1.24.0
+pandas>=2.0.0
+matplotlib>=3.7.0
+plotly>=5.15.0
+```
+
+## Installation & Requirements
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/rishiakkala/Aircraft-Detection-Using-YOLOv8.git
+cd Aircraft-Detection-Using-YOLOv8
+```
+
+### Install Dependencies
+
+Create a virtual environment (recommended):
+
+```bash
+python -m venv aircraft_detection_env
+source aircraft_detection_env/bin/activate  # On Windows: aircraft_detection_env\Scripts\activate
+```
 
 Install the required packages:
 
 ```bash
+pip install -r requirements.txt
+```
+
+Or install manually:
+
+```bash
 pip install ultralytics
+pip install streamlit
 pip install matplotlib
 pip install numpy
 pip install torch torchvision
+pip install pillow
+pip install opencv-python
+pip install pandas
 ```
 
 For GPU acceleration (recommended):
@@ -90,34 +147,128 @@ For GPU acceleration (recommended):
 pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
 ```
 
-## How to Run
+## How to Use
 
-1. Clone this repository
-2. Install the required packages
-3. Run the training script:
+### Step 1: Train the Model
+
+Run the training script to train your custom aircraft detection model:
 
 ```bash
 python train_aircraft_yolov8.py
 ```
 
-### Training Process
+### Step 2: Run the Streamlit Application
 
-The script will:
-1. Set up GPU if available
-2. Create a dataset YAML configuration file
-3. Train the YOLOv8 model (default: YOLOv8s)
-4. Validate the model and calculate performance metrics
-5. Save the trained model to the `models/` directory
-6. Generate visualization plots in the `runs/` directory
+After training the model, launch the interactive web application:
 
-## Customization
+```bash
+python app.py
+```
+
+The application will open in your default web browser
+
+## Application Features
+
+The interactive web application provides the following functionality:
+
+### 🎯 Real-time Aircraft Detection
+- Upload images for aircraft detection
+- Real-time webcam detection
+- Batch processing of multiple images
+- Video file processing support
+
+### ⚙️ Customizable Settings
+- **Confidence Threshold**: Adjust detection sensitivity (0.1 - 1.0)
+- **Model Selection**: Choose between different YOLOv8 model sizes
+- **Class Filtering**: Select specific aircraft types to detect
+- **Visualization Options**: Toggle bounding boxes, labels, and confidence scores
+
+### 📊 Results Display
+- Detection results with bounding boxes
+- Confidence scores for each detection
+- Class labels with aircraft names
+- Detection statistics and metrics
+
+## Application Screenshots
+
+### Main Interface
+![Main Interface](![image](https://github.com/user-attachments/assets/a64f72d2-bf99-4384-add2-28e48b19f88a))
+*The main application interface showing upload options and settings*
+
+### Image Detection Results
+![Detection Results](![image](https://github.com/user-attachments/assets/20dfd52f-42f5-42a9-9138-571f4fd5b14c))
+*Aircraft detection results with bounding boxes and confidence scores*
+
+### About Page
+![About Page](![image](https://github.com/user-attachments/assets/e81ef280-95ff-42bc-945a-36fba7bb3d79))
+*About the Model and Tech Stacks Used*
+
+## Application Usage Guide
+
+1. **Start the Application**: Run `python app.py`
+2. **Configure Settings**: 
+   - Set confidence threshold (recommended: 0.5)
+   - Select model size based on your hardware capabilities
+   - Choose specific aircraft classes to detect (or select all)
+3. **Choose Input Source**:
+   - **Upload Image**: Click "Browse files" to upload aircraft images
+   - **Use Webcam**: Enable webcam for real-time detection
+   - **Upload Video**: Process video files for aircraft detection
+4. **View Results**: 
+   - Detected aircraft will be highlighted with bounding boxes
+   - Confidence scores and aircraft types will be displayed
+   - Download processed images/videos with detections
+
+## Customization & Configuration
+
+### Training Parameters
 
 You can modify the following parameters in the `main()` function of `train_aircraft_yolov8.py`:
 
 - `model_size`: Model size ('n', 's', 'm', 'l', 'x')
-- `epochs`: Number of training epochs
-- `batch_size`: Batch size for training
-- `img_size`: Input image size
+- `epochs`: Number of training epochs (default: 100)
+- `batch_size`: Batch size for training (default: 16)
+- `img_size`: Input image size (default: 640)
+
+### App Configuration
+
+The App can be customized by modifying `app.py`:
+
+- **Default confidence threshold**: Adjust the default detection confidence
+- **Model path**: Point to your trained model weights
+- **UI layout**: Customize the application interface
+- **Supported formats**: Add support for additional image/video formats
+
+## Troubleshooting
+
+### Common Issues
+
+1. **CUDA/GPU Issues**:
+   ```bash
+   # Check CUDA availability
+   python -c "import torch; print(torch.cuda.is_available())"
+   ```
+
+2. **Model Loading Errors**:
+   - Ensure the trained model exists in the `models/` directory
+   - Check model path in the app configuration
+
+3. **Streamlit Port Issues**:
+   ```bash
+   # Run on a different port
+   streamlit run app.py --server.port 8502
+   ```
+
+4. **Memory Issues**:
+   - Reduce batch size for training
+   - Use smaller model size ('n' or 's')
+   - Process smaller images
+
+### System Requirements
+
+- **Minimum**: 8GB RAM, CPU-only inference
+- **Recommended**: 16GB RAM, NVIDIA GPU with 4GB+ VRAM
+- **Optimal**: 32GB RAM, NVIDIA GPU with 8GB+ VRAM
 
 ## Model Information
 
@@ -141,4 +292,3 @@ Feel free to contribute to this project by:
 - Improving the dataset quality
 - Optimizing the training parameters
 - Adding inference scripts for real-time detection
-
