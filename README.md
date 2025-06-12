@@ -192,15 +192,15 @@ The interactive web application provides the following functionality:
 ## Application Screenshots
 
 ### Main Interface
-![Main Interface](![image](https://github.com/user-attachments/assets/a64f72d2-bf99-4384-add2-28e48b19f88a))
+![Main Interface](screenshots/Screenshot 2025-06-12 160910.png)
 *The main application interface showing upload options and settings*
 
 ### Image Detection Results
-![Detection Results](![image](https://github.com/user-attachments/assets/20dfd52f-42f5-42a9-9138-571f4fd5b14c))
+![Detection Results](screenshots/Screenshot 2025-06-12 161801.png)
 *Aircraft detection results with bounding boxes and confidence scores*
 
 ### About Page
-![About Page](![image](https://github.com/user-attachments/assets/e81ef280-95ff-42bc-945a-36fba7bb3d79))
+![About Page](screenshots/Screenshot 2025-06-12 161843.png)
 *About the Model and Tech Stacks Used*
 
 ## Application Usage Guide
