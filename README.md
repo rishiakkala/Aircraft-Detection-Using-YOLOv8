@@ -195,10 +195,6 @@ The interactive web application provides the following functionality:
 ![Main Interface](screenshots/main_interface.png)
 *The main application interface showing upload options and settings*
 
-### Processing
-![Main Interface](screenshots/processing.png)
-*To detect the aircraft it will be proceesed*
-
 ### Image Detection Results
 ![Detection Results](screenshots/detection_results.png)
 *Aircraft detection results with bounding boxes and confidence scores*
