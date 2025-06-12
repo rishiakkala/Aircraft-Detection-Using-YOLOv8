@@ -191,6 +191,10 @@ The interactive web application provides the following functionality:
 
 ## Application Screenshots
 
+### Main Interface
+![Main Interface](screenshots/main_interface.png)
+*The main application interface showing upload options and settings*
+
 ### Processing
 ![Main Interface](screenshots/processing.png)
 *To detect the aircraft it will be proceesed*
