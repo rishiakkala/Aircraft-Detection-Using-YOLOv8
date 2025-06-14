@@ -87,23 +87,6 @@ The training script will:
 └── README.md                  # Project documentation
 ```
 
-## Requirements File
-
-Create a `requirements.txt` file with the following dependencies:
-
-```
-ultralytics>=8.0.0
-streamlit>=1.28.0
-torch>=2.0.0
-torchvision>=0.15.0
-opencv-python>=4.8.0
-pillow>=9.5.0
-numpy>=1.24.0
-pandas>=2.0.0
-matplotlib>=3.7.0
-plotly>=5.15.0
-```
-
 ## Installation & Requirements
 
 ### Clone the Repository
